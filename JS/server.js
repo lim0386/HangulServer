@@ -18,10 +18,10 @@ io.sockets.on('connection',
   
     console.log("We have a new client: " + socket.id);
   
-    socket.on('textMessage',
+    socket.on('message',
       function(data) {
         console.log("Received: 'textMessage'"+data);
-        socket.broadcast.emit('textMessage', data);
+        socket.broadcast.emit('message', data);
       }
     );
     

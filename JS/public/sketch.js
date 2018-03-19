@@ -3,6 +3,7 @@ var output;
 var output2;
 var finalText;
 var socket;
+var textFinal;
 
 function setup() {
   data = "";
@@ -13,7 +14,7 @@ function setup() {
   output2 = select('#output2');
 //   socket = io.connect('http://localhost:3000');
   socket = io.connect('http://165.194.69.166:3000');
-  socket.on('textMessage',
+  socket.on('message',
     function(data) {
 //       console.log(data);
 print("recieved: "+data);
@@ -35,5 +36,5 @@ function newTyping() {
 
 function sendText(textString) {
   var data = textString;
-  socket.emit('textMessage', data);
+  socket.emit('message', data);
 }
