@@ -13,9 +13,10 @@ function setup() {
   output = select('#output');
   output2 = select('#output2');
 //   socket = io.connect('http://localhost:3000');
-  socket = io.connect('http://165.194.69.166:3000');
-  socket.on('message',
-    function(data) {
+  socket = io.connect('http://165.194.69.166:3000');//Office Mac
+//   socket = io.connect('http://192.168.0.101:3000');//Home Mac
+//   socket = io.connect('http://165.194.69.145:3000');//Office Windows
+  socket.on('message', function(data) {
 //       console.log(data);
 print("recieved: "+data);
 output2.html(data);
