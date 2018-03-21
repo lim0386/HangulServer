@@ -17,10 +17,8 @@ function setup() {
 //   socket = io.connect('http://192.168.0.101:3000');//Home Mac
 //   socket = io.connect('http://165.194.69.145:3000');//Office Windows
   socket.on('message', function(data) {
-//       console.log(data);
-print("recieved: "+data);
+
 output2.html(data);
-      // output2.html(data);
     }
   );
 }
@@ -31,11 +29,7 @@ function newTyping() {
   sendText(finalText);
 }
 
-// function newText() {
-//   createP(textfield.value());
-// }
-
 function sendText(textString) {
   var data = textString;
-  socket.emit('message', data);
+  socket.broadcast.emit('message', data);
 }

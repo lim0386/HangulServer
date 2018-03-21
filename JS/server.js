@@ -12,20 +12,16 @@ app.use(express.static('public'));
 
 var io = require('socket.io')(server);
 
-io.sockets.on('connection',
+io.sockets.on('connection', function(socket) {
 
-  function (socket) {
-  
-    console.log("We have a new client: " + socket.id);
-  
-    socket.on('message', function(data) {
-        console.log("Received: 'textMessage'"+data);
-        socket.broadcast.emit('message', data);
-      }
-    );
-    
-    socket.on('disconnect', function() {
-      console.log("Client has disconnected");
-    });
-  }
-);
+  console.log("We have a new client: " + socket.id);
+
+  socket.on('message', function(data) {
+    //         console.log("Received: 'message'"+data);
+    socket.broadcast.emit('message', data);
+  });
+
+  socket.on('disconnect', function() {
+    console.log("Client has disconnected");
+  });
+});
